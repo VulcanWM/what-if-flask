@@ -267,7 +267,7 @@ def censor(word):
   return new_word
 
 def if_user_follows(username):
-  data = requests.post("https://replit.com/graphql", json = {
+  data = requests.post("https://firewalledreplit.com/graphql", json = {
   			"query": """
   query userByUsername($username: String!) {
   	userByUsername(username: $username) {

@@ -30,16 +30,20 @@
       <p>There are no comments!</p>
     {% endif %}
     {% for comment in comments %} 
-      <p>{{comment['Body']}}</p>
-      {% if user['Username'] == comment['Username'] %}
-        <p>By <a href="/profile">you</a></p>
-      {% else %}
-        <p>By <a href="/user/{{comment['Username']}}">{{comment['Username']}}</a></p>
-      {% endif %}
-      {% if "Moderator" in user['Roles'] %}
-        <a href="/deletecomment/{{scenario['_id']}}/{{comment['Username']}}">↑Delete Comment↑</a>
-      {% endif %}
-      <br>
+      {% set colors = ["#1e2938", "#304769", "#29426b"] %}
+      {% set num = loop.index % 3 %}
+      <div class="comment" style="background-color: {{colors[num]}}">
+        <p>{{comment['Body']}}</p>
+        {% if user['Username'] == comment['Username'] %}
+          <p>By <a href="/profile">you</a></p>
+        {% else %}
+          <p>By <a href="/user/{{comment['Username']}}">{{comment['Username']}}</a></p>
+        {% endif %}
+        {% if "Moderator" in user['Roles'] %}
+          <a href="/deletecomment/{{scenario['_id']}}/{{comment['Username']}}">↑Delete Comment↑</a>
+        {% endif %}
+        <br>
+      </div>
     {% endfor %}
   {% else %}
     <form class='flex-center' method='POST' action='/postcomment/{{scenario["_id"]}}'>

@@ -229,3 +229,7 @@ textarea {
 tr:hover {
   background-color: #0956c8
 }
+
+.comment {
+  width: 100%
+}
