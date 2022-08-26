@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+	<title>What If? - {{scenario['Title']}}</title>
+</head>
+<body>
+  <div class="topnav flex-center flex-row">
+    <a href="/">Dashboard</a>
+    <a href="/profile">Your Profile</a>
+    <a href="/newscenario">New Scenario</a>
+    {% if "Moderator" in user['Roles'] %}
+      <a href="/admin">Admin Page</a>
+    {% endif %}
+    <a href="https://replit.com/@VulcanWM" target="_blank">Follow VulcanWM</a>
+  </div>
+    <div class='flex-center content'>
+  <h2>{{scenario['Title']}}</h2>
+  <p>{{scenario['Desc']}}</p>
+  {% if "Moderator" in user['Roles'] %} 
+    <a href="/editscenario/{{scenario['_id']}}">Edit Scenario</a>
+  {% endif %}
+  <hr>
+  {% if scenario['_id'] in user['Posted'] %}
+    <h3>Comments:</h3>
+    {% if comments == [] %}
+      <p>There are no comments!</p>
+    {% endif %}
+    {% for comment in comments %} 
+      <p>{{comment['Body']}}</p>
+      {% if user['Username'] == comment['Username'] %}
+        <p>By <a href="/profile">you</a></p>
+      {% else %}
+        <p>By <a href="/user/{{comment['Username']}}">{{comment['Username']}}</a></p>
+      {% endif %}
+      {% if "Moderator" in user['Roles'] %}
+        <a href="/deletecomment/{{scenario['_id']}}/{{comment['Username']}}">↑Delete Comment↑</a>
+      {% endif %}
+      <br>
+    {% endfor %}
+  {% else %}
+    <form class='flex-center' method='POST' action='/postcomment/{{scenario["_id"]}}'>
+      <textarea id="comment" placeholder="comment (max length: 300 characters)" name="comment" rows="15" cols="40"></textarea>
+      <br>
+      <button class="login-form-button">Post Comment</button>
+    </form>
+  {% endif %}
+    </div>
+</body>
+</html>

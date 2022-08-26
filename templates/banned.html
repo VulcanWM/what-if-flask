@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css')}}">
+	<title>What If? - Dashboard</title>
+</head>
+<body>
+    <div class='flex-center content'>
+	<h1>Hello {{document['Username']}}!</h1>
+  <p>You are banned because {{document['Banned']}}</p>
+    </div>
+</body>
+</html>

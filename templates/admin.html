@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+	<title>What If? - Admin Dashboard</title>
+</head>
+<body>
+  <div class="topnav flex-center flex-row">
+    <a href="/">Dashboard</a>
+    <a href="/profile">Your Profile</a>
+    <a href="/newscenario">New Scenario</a>
+    <a href="/admin">Admin Page</a>
+    <a href="https://replit.com/@VulcanWM" target="_blank">Follow VulcanWM</a>
+  </div>
+    <div class='flex-center content'>
+  <p>{{msg}}</p>
+  <h2>Admin Dashboard</h2>
+  <form class='flex-center' method="POST" action="/banuser">
+    <h3>Ban User</h3>
+    <input class="login-form-input" placeholder="username" name="username" autocomplete="off" required><br>
+    <textarea id="reason" placeholder="reason" name="reason" rows="5" cols="40">they were being rude</textarea>
+    <br>
+    <button class="login-form-button">Ban User</button>
+  </form>
+  <hr>
+  <form  class='flex-center' method="POST" action="/unbanuser">
+    <h3>Unban User</h3>
+    <input class="login-form-input" placeholder="username" name="username" autocomplete="off" required><br>
+    <br>
+    <button class="login-form-button">Unban User</button>
+  </form>
+  <hr>
+  <form class='flex-center'  method="POST" action="/addwarning">
+    <h3>Add Warnings</h3>
+    <input class="login-form-input" placeholder="username" name="username" autocomplete="off" required><br>
+    <input class="login-form-input" placeholder="amount of warns" name="amount" type="number" autocomplete="off" required><br>
+    <br>
+    <button class="login-form-button">Add Warnings</button>
+  </form>
+  <hr>
+  <a href="/usernamefromid">Replit Username from Id</a>
+  <hr>
+  {% if scenarios == [] %}
+    <p>There are no unverified scenarios!</p>
+  {% endif %}
+  {% for scenario in scenarios %}
+    <p>{{scenario['Title']}}</p>
+    <p>{{scenario['Desc']}}</p>
+    <p>By: {{scenario['UserId']}}</p>
+    <a href="/accept_scenario/{{scenario['_id']}}">Accept Scenario</a>
+    <a href="/decline_scenario/{{scenario['_id']}}">Decline Scenario</a>
+  {% endfor %}
+    </div>
+</body>
+</html>

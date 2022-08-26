@@ -1,0 +1,62 @@
+<html>
+<!doctype html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css')}}">
+	<title>What If? - {{document['Username']}}'s Profile</title>
+</head>
+<body>
+  <div class="topnav flex-center flex-row">
+    <a href="/">Dashboard</a>
+    <a href="/profile">Your Profile</a>
+    <a href="/newscenario">New Scenario</a>
+    {% if "Moderator" in user['Roles'] %}
+      <a href="/admin">Admin Page</a>
+    {% endif %}
+    <a href="https://replit.com/@VulcanWM" target="_blank">Follow VulcanWM</a>
+  </div>
+    <div class='flex-center content'>
+  {% if text != None and text != False and text != "" %}
+    <p>{{text}}</p>
+  {% endif %}
+  {% if "Moderator" in user['Roles'] %}
+    <p>{{document['Username']}} has {{document['Warnings']}} warnings!</p>
+  {% endif %}
+  <h2>{{document['Username']}}'s Profile</h2>
+  <br>
+  {% for role in document['Roles'] %}
+    <center>
+      <div class="tooltip">{{role}}
+        <span class="tooltiptext">{{rolesinfo[role]}}</span>
+      </div>
+    </center>
+  {% endfor %}
+  {% if follows == True %}
+    <center>
+      <div class="tooltip">Supporter
+        <span class="tooltiptext">{{rolesinfo["Supporter"]}}</span>
+      </div>
+    </center>
+  {% endif %}
+      
+  <p>All of {{document['Username']}}'s Completed Scenarios</p>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Done?</th>
+    </tr>
+    {% for scenario in scenarios %}
+      {% if scenario['_id'] in document['Posted'] %}
+        <tr style='cursor: pointer;' onclick="window.location.href='/scenario/{{scenario['_id']}}'">
+          <td>{{scenario['Title']}}</td>
+          <td>Yes</td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </table>
+    </div>
+</body>
+</html>

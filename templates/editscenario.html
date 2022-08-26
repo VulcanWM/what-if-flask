@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+	<title>What If? - Edit Scenario</title>
+</head>
+<body>
+  <div class="topnav flex-center flex-row">
+    <a href="/">Dashboard</a>
+    <a href="/profile">Your Profile</a>
+    <a href="/newscenario">New Scenario</a>
+    <a href="/admin">Admin Page</a>
+    <a href="https://replit.com/@VulcanWM" target="_blank">Follow VulcanWM</a>
+  </div>
+    <div class='flex-center content'>
+  <h2>Edit Scenario</h2>
+  <form method="POST" action="/editscenario/{{scenario['_id']}}">
+    <input class="login-form-input" placeholder="title" name="title" autocomplete="off" value="{{scenario['Title']}}" required><br>
+    <textarea id="desc" placeholder="description" name="desc" rows="10" cols="40">{{scenario['Desc']}}</textarea>
+    <br>
+    <button class="login-form-button">Create scenario</button>
+  </form>
+    </div>
+</body>
+</html>

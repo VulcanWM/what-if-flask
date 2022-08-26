@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<title>What If? - Intro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='intro.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+  <div class="slideshow-container flex-center content">
+    {% if slide == 1 %}
+      <h3>What If?</h3>
+      <p>This is a website where you will face hypothetical scenarios (what if), and you can enter your thoughts for each of them.</p>
+      <p>After you enter your thought, you will be able to view what other user's have said, and compare your thoughts to their's!</p>
+      <button class="next" onclick="window.location.href='/intro/2'">Next</button>
+    {% elif slide == 2 %}
+      <h3>Rules</h3>
+      <ol>
+        <li>Don't be mean or toxic</li>
+        <li>Don't swear</li>
+        <li>No hate speech/slurs</li>
+        <li>Do not attempt to bypass filters</li>
+        <li>Do not attempt to harass moderators for their decisions</li>
+        <li>No NSFW, politics, religion, or controversial topics</li>
+        <li>Abide by Replit's terms of service</li>
+        <li>Enjoy and have fun</li>
+      </ol>
+      <button class="next" onclick="window.location.href='/intro/3'">Next</button>
+    {% else %}
+      <h3>Experience more features</h3>
+      <p>Follow <a href="https://replit.com/@VulcanWM">@VulcanWM on Replit</a> to get some perks and experience more features.</p>
+      <button class="next" onclick="window.location.href='/dashboard'">Start having fun!</button>
+    {% endif %}
+  </div>
+    <div class='flex-center'>
+  <div class="dot-container">
+    <span class="dot active"></span>
+    {% if slide != 1 %}
+      <span class="dot active"></span>
+    {% else %}
+      <span class="dot"></span>
+    {% endif %}
+    {% if slide == 3 %}
+      <span class="dot active"></span>
+    {% else %}
+      <span class="dot"></span>
+    {% endif %}
+    </div>
+  </div>
+</body>
+</html>

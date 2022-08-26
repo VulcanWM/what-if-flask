@@ -1,0 +1,231 @@
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #1B232F;
+  color: white;
+}
+
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.content {
+    margin: 0 5em;
+}
+
+button {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+    border-radius: 10px;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+a {
+  color: #81CFF2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #77e07e;
+  text-decoration: none;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #222244;
+  border-radius: 15px;
+  box-shadow: 5px 10px 500px black;
+  /*background-color: #0000FF;*/
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.topnav:hover {
+  background-color: #111122;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  /*background-color: #00008B;*/
+  background-color: #483D8B;
+  color: white;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px; 
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: #2d2d7b;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+.navbar a:hover, .dropdown:hover .dropbtn {
+  color: white;
+  background-color: #483D8B;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  background-color: #1b77ee;
+  color: #fff;
+  border-radius: 5px;
+  padding: 4px;
+  margin: 4px;
+} 
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.msg {
+    background-color: rgba(227, 163, 9, 0.5);
+    border: 1px solid rgba(227, 163, 9, 1);
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    transition: 0.75s;
+}
+.msg:hover{
+    box-shadow: 10px 10px 20px 0px rgba(227, 163, 9, 0.75);
+}
+
+
+input, textarea{
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid #3ed0ed;
+  background-color: transparent;
+  outline: none;
+  font-size: 15px;
+  transition: 0.2s;
+  width: 200px;
+  margin-bottom: 30px; 
+  color: white;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+input:focus{
+  border-color:#AD91FF;
+  width: 250px;
+}
+
+textarea:focus {
+  border-color: #AD91FF;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #3ed0ed;
+  border-radius: 15px;
+  background-color: transparent;
+  font-size: 16px;
+  resize: none;
+}
+
+tr:hover {
+  background-color: #0956c8
+}
