@@ -6,6 +6,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css')}}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico')}}">
 	<title>What If? - {{document['Username']}}'s Profile</title>
 </head>
 <body>
@@ -25,8 +26,11 @@
   {% if "Moderator" in user['Roles'] %}
     <p>{{document['Username']}} has {{document['Warnings']}} warnings!</p>
   {% endif %}
-  <h2>{{document['Username']}}'s Profile</h2>
-  <br>
+  <div class='flex-center flex-row'>
+    <h2>{{document['Username']}}'s Profile</h2>
+    <img src="{{pfp}}" alt="Profile Pic" width="10%" height="10%" style="border-radius: 50%; margin-left: 10px;"/>
+  </div>
+        <div class='flex-center flex-row'>
   {% for role in document['Roles'] %}
     <center>
       <div class="tooltip">{{role}}
@@ -41,6 +45,7 @@
       </div>
     </center>
   {% endif %}
+        </div>
       
   <p>All of {{document['Username']}}'s Completed Scenarios</p>
   <table>

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect
-from functions import get_user, add_user, get_nv_scenario_user, add_scenario, url_encode, accept_scenario, decline_scenario, get_all_nvs, get_max_id, get_all_scenarios, get_scenario, get_all_comments, post_comment, edit_scenario, delete_comment, ban_user, unban_user, add_warning, get_user_from_username, if_user_follows
+from functions import get_user, add_user, get_nv_scenario_user, add_scenario, url_encode, accept_scenario, decline_scenario, get_all_nvs, get_max_id, get_all_scenarios, get_scenario, get_all_comments, post_comment, edit_scenario, delete_comment, ban_user, unban_user, add_warning, get_user_from_username, if_user_follows, profile_pic
 import os
 
 app = Flask(__name__)
@@ -346,6 +346,6 @@ def user_page(username):
       return redirect(f"/dashboard?msg={username} is not a real user")
     if get_user_from_username(username).get("Banned", False) != False:
       return redirect(f"/dashboard?msg={username} is banned!")
-    return render_template("userprofile.html", document=get_user_from_username(username), user=get_user(user_id), max_id=get_max_id(), scenarios=get_all_scenarios(), rolesinfo={"Owner": "This user is the owner of this website!", "Moderator": "This User has the power to do anything!", "Helper": "This user has suggested a scenario and it has been verified!", "Tester": "This user has helped in testing out this website!", "Contributor": "This user has helped with this website's code!", "Supporter": "This user follows VulcanWM"}, follows=if_user_follows(username))
+    return render_template("userprofile.html", document=get_user_from_username(username), user=get_user(user_id), max_id=get_max_id(), scenarios=get_all_scenarios(), rolesinfo={"Owner": "This user is the owner of this website!", "Moderator": "This User has the power to do anything!", "Helper": "This user has suggested a scenario and it has been verified!", "Tester": "This user has helped in testing out this website!", "Contributor": "This user has helped with this website's code!", "Supporter": "This user follows VulcanWM"}, follows=if_user_follows(username), pfp=profile_pic(username))
   else:
     return redirect("/login")

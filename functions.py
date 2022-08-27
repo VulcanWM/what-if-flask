@@ -285,3 +285,23 @@ def if_user_follows(username):
   })
   data = json.loads(data.text)["data"]["userByUsername"]
   return data['isFollowingCurrentUser']
+
+def profile_pic(username):
+  data = requests.post("https://firewalledreplit.com/graphql", json = {
+  			"query": """
+  query userByUsername($username: String!) {
+  	userByUsername(username: $username) {
+      image
+    }
+  }
+     """,
+  			"variables": """{ "username": "%s" }""" % username
+  		},
+  headers = {
+    "X-Requested-With": "ReplitApi",
+    "referer": "https://replit.com/",
+    "User-Agent": "Mozilla/5.0",
+    "Cookie": f"connect.sid={os.getenv('cookie')}"
+  })
+  data = json.loads(data.text)["data"]["userByUsername"]
+  return data['image']
